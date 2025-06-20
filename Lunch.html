@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('rin.jpg'); /* Cambia esta URL por tu imagen */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .menu-container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #c026a1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+        }
+
+        .item img {
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #c026a1;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #75d77e;
+        }
+
+        .cart {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            display: none;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 3px 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        #total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="toggleCart()" style="position: fixed; top: 10px; right: 10px;">🛒 Ver Carrito</button>
+
+    <div class="menu-container">
+        <h1>Menú de Almuerzo</h1>
+
+        <div class="grid-container">
+            <div class="item">
+                <img src="pechuga.JPG" alt="Pechuga a la Plancha">
+                <span>Pechuga a la Plancha - $110</span>
+                <button onclick="addToCart('Pechuga a la Plancha', 110)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="empanizada.jpg" alt="Pechuga Empanizada">
+                <span>Pechuga Empanizada - $115</span>
+                <button onclick="addToCart('Pechuga Empanizada', 115)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="burrito.jpg" alt="Burritos">
+                <span>Burritos - $85</span>
+                <button onclick="addToCart('Burritos', 85)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="club.jpg" alt="Club Sándwich">
+                <span>Club Sándwich - $110</span>
+                <button onclick="addToCart('Club Sándwich', 110)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="hot dog.jpg" alt="Hot Dogs">
+                <span>Hot Dogs (2 piezas) - $65</span>
+                <button onclick="addToCart('Hot Dogs', 65)">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <div class="cart-header">
+            <h2>Carrito</h2>
+            <button onclick="toggleCart()">❌</button>
+        </div>
+        <ul id="cart-items"></ul>
+        <p id="total">Total: $0</p>
+        <button onclick="checkout()">Finalizar Pedido</button>
+    </div>
+
+    <script>
+        let totalPrice = 0;
+
+        function toggleCart() {
+            const cart = document.getElementById("cart");
+            cart.style.display = cart.style.display === "none" || cart.style.display === "" ? "block" : "none";
+        }
+
+        function addToCart(item, price) {
+            const cartItems = document.getElementById("cart-items");
+            const listItem = document.createElement("li");
+            listItem.className = "cart-item";
+            listItem.innerHTML = `${item} - $${price} <button class="delete-btn" onclick="removeItem(this, ${price})">Eliminar</button>`;
+            cartItems.appendChild(listItem);
+
+            totalPrice += price;
+            document.getElementById("total").textContent = `Total: $${totalPrice}`;
+        }
+
+        function removeItem(button, price) {
+            button.parentElement.remove();
+            totalPrice -= price;
+            document.getElementById("total").textContent = `Total: $${totalPrice}`;
+        }
+
+        function checkout() {
+            alert(`Total a pagar: $${totalPrice}`);
+        }
+    </script>
+
+</body>
+</html>

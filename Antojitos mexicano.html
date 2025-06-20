@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antojitos Mexicanos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('rin.jpg'); /* Cambia esta URL por tu imagen */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .menu-container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #c026a1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+        }
+
+        .item img {
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .item span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            background-color: #c026a1;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #75d77e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-container">
+        <h1> Antojitos Mexicanos </h1>
+
+        <div class="grid-container">
+            <div class="item">
+                <img src="enchiladas_queretanas.jpg" alt="Enchiladas Queretanas">
+                <span> Enchiladas Queretanas - $70</span>
+                <p>Servidas con arroz.</p>
+                <button>Agregar</button>
+            </div>
+            <div class="item">
+                <img src="gorditas q.jpeg" alt="Gorditas Quebraditas">
+                <span> Gorditas Quebraditas - $40</span>
+                <p>Carne molida, papas con chorizo o tinga.</p>
+                <button>Agregar</button>
+            </div>
+            <div class="item">
+                <img src="sopes.jpeg" alt="Sopes de Maíz / Nopal">
+                <span> Sopes de Maíz / Nopal - $60</span>
+                <p>3 piezas con carne molida, tinga, frijoles con queso o papas con chorizo.</p>
+                <button>Agregar</button>
+            </div>
+            <div class="item">
+                <img src="pambaso.jpg" alt="Pambazos">
+                <span> Pambazos - $40</span>
+                <p>Carne molida, tinga o papas con chorizo.</p>
+                <button>Agregar</button>
+            </div>
+            <div class="item">
+                <img src="tacoa dorados.jpeg" alt="Tacos Dorados">
+                <span> Tacos Dorados - $65</span>
+                <p>4 piezas, de papa o pollo.</p>
+                <button>Agregar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
